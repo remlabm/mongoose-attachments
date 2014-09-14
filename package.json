@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "async": "0.1.x",
-    "imagemagick": "0.1.x"
+    "imagemagick": "https://github.com/nathankot/node-imagemagick/tarball/wedis"
   },
   "engines": {
     "node": "*"
