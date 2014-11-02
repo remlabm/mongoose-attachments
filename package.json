@@ -28,6 +28,7 @@
   },
   "devDependencies": {
     "chai": "^1.9.2",
+    "checksum": "^0.1.1",
     "file": "^0.2.2",
     "mocha": "^2.0.1",
     "mongoose": "^3.8.18"
