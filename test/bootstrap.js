@@ -2,6 +2,8 @@ global.chai = require('chai');
 global.expect = chai.expect;
 
 var fs = require('fs');
+var path = require('path');
+var file = require('file');
 var mongoose = require('mongoose');
 var plugin = require('../lib/attachments');
 
@@ -15,8 +17,7 @@ if (!plugin.providersRegistry.fakeProvider) {
 
   fakeProvider.prototype.createOrReplace = function(attachment, next){
     attachment.defaultUrl = this.getUrl(attachment.path);
-
-    console.log(attachment.filename);
+    file.mkdirsSync(path.dirname(attachment.path));
     fs.createReadStream(attachment.filename).pipe(
       fs.createWriteStream(attachment.path)
       .on('finish', function() {
@@ -34,7 +35,7 @@ if (!mongoose.models.User) {
   UserSchema = new mongoose.Schema({ });
 
   UserSchema.plugin(plugin, {
-    directory: process.cwd() + '/tmp',
+    directory: path.join(process.cwd(), 'test', 'tmp'),
     storage: { providerName: 'fakeProvider', options: { } },
     properties: {
       profile: { styles: { original: { } } },
