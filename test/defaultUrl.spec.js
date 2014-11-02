@@ -1,5 +1,4 @@
 var mongoose = require('mongoose');
-var expect = require('chai').expect;
 var fs = require('fs');
 var plugin = require('../lib/attachments');
 
