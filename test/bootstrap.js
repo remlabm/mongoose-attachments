@@ -43,7 +43,7 @@ if (!mongoose.models.User) {
         styles: {
           original: { },
           thumbnail: {
-            thumbnail: '140x140^',
+            thumbnail: '25x25^',
             gravity: 'center',
           }
         }
