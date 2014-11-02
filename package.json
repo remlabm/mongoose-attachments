@@ -18,7 +18,8 @@
   "main": "index.js",
   "scripts": {
     "test": "npm run specs",
-    "specs": "./node_modules/.bin/mocha -r test/bootstrap.js test/**/*.spec.js"
+    "specs": "./node_modules/.bin/mocha -r test/bootstrap.js test/**/*.spec.js",
+    "watch": "./node_modules/.bin/mocha -r test/bootstrap.js test/**/*.spec.js --watch **/*.js"
   },
   "dependencies": {
     "async": "0.1.x",
