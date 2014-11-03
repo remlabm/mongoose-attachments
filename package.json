@@ -24,7 +24,6 @@
   "dependencies": {
     "async": "0.1.x",
     "gm": "^1.17.0",
-    "imagemagick": "git://github.com/nathankot/node-imagemagick.git#wedis",
     "lodash": "^2.4.1",
     "q": "^1.0.1"
   },
