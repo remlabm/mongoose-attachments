@@ -43,8 +43,12 @@ if (!mongoose.models.User) {
         styles: {
           original: { },
           thumbnail: {
-            thumbnail: '25x25^',
-            gravity: 'center',
+            transform: function(image) {
+              return image
+                .thumbnail(25, 25)
+                .gravity('center')
+              ;
+            }
           }
         }
       },
