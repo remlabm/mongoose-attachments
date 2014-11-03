@@ -52,13 +52,23 @@ PostSchema.plugin(attachments, {
           // keep the original file
         },
         small: {
-          resize: '150x150'
+          transform: function(image) {
+            return image
+              .resize(150, 150)
+            ;
+          }
         },
         medium: {
-          resize: '120x120'
+          transform: function(image) {
+            return image
+              .resize(120, 120)
+            ;
+          }
         },
         medium_jpg: {
-          '$format': 'jpg' // this one changes the format of the image to jpg
+          options: {
+            format: 'jpg' // this one changes the format of the image to jpg
+          }
         }
       }
     }
@@ -124,14 +134,24 @@ MySchema.plugin(attachments, {
           // keep the original file
         },
         thumb: {
-          thumbnail: '100x100^',
-          gravity: 'center',
-          extent: '100x100',
-          '$format': 'jpg'
+          options: {
+            format: 'jpg'
+          },
+          transform: function(image) {
+            return image
+              .thumbnail(100, 100)
+              .gravity('center')
+              .extend(100, 100)
+          }
         },
         detail: {
-          resize: '400x400>',
-          '$format': 'jpg'
+          options: {
+            format: 'jpg'
+          },
+          transform: function(image) {
+            return image
+              .resize(400, 400, '>')
+          }
         }
       }
     }
@@ -171,25 +191,9 @@ Example:
 }
 ```
 
-### Styles and ImageMagick Transformations
+### Styles and Transformations
 
-Transformations are achieved by invoking the **convert** command from ImageMagick and passing all the properties of the style as arguments.
-
-For more information about convert, take a look at http://www.imagemagick.org/script/command-line-options.php
-
-Example in convert command:
-
-    convert source.png -resize '50%' output.png
-
-Example in plugin options:
-
-```javascript
-styles: {
-  small: {
-    resize: '50%'
-  }
-}
-```
+Transformations are achieved using the [gm library](https://github.com/aheckmann/gm).
 
 #### Keeping the Original File
 
@@ -201,30 +205,19 @@ styles: {
 }
 ```
 
-#### Multiples Transformations
-
-Use another properties under the style to provide more transformations
-
-```javascript
-styles: {
-  small: {
-    crop: '120x120',
-    blur: '5x10' //radius x stigma
-  }
-}
-```
-
 More information about 'blur' at the [ImageMagick website] http://www.imagemagick.org/script/command-line-options.php#blur
 
 #### Changing the Destination Format
 
-You can change the destination format by using the special transformation '$format' with a known file extension like *png*, *jpg*, *gif*, etc.
+You can specify a format option to change the format of the output.
 
 Example:
 
     styles: {
       as_jpeg: {
-        '$format': 'jpg'
+        options: {
+          format: 'jpg'
+        }
       }
     }
 
