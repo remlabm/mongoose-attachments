@@ -41,6 +41,11 @@ if (!mongoose.models.User) {
     storage: { providerName: 'fakeProvider', options: { } },
     gm: { imageMagick: true, },
     properties: {
+      document: {
+        styles: {
+          original: {}
+        }
+      },
       profile: { styles: { original: { } } },
       avatar:  {
         styles: {
