@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
-var plugin = require('../lib/attachments');
+var plugin = require('../lib/attachments.js');
 
 describe('path', function(){
 

@@ -5,9 +5,11 @@ var fs = require('fs');
 var path = require('path');
 var file = require('file');
 var mongoose = require('mongoose');
-var plugin = require('../lib/attachments');
+var plugin = require('../lib/attachments.js');
 
-if (!plugin.providersRegistry.fakeProvider) {
+try {
+  plugin.findProvider('fakeProvider');
+} catch (err) {
 
   var fakeProvider = function(){};
 
@@ -37,6 +39,7 @@ if (!mongoose.models.User) {
   UserSchema.plugin(plugin, {
     directory: path.join(process.cwd(), 'test', 'tmp'),
     storage: { providerName: 'fakeProvider', options: { } },
+    gm: { imageMagick: true, },
     properties: {
       profile: { styles: { original: { } } },
       avatar:  {
