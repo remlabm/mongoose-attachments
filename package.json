@@ -22,10 +22,9 @@
     "watch": "./node_modules/.bin/mocha -r test/bootstrap.js test/**/*.spec.js --watch **/*.js"
   },
   "dependencies": {
-    "async": "0.1.x",
+    "bluebird": "^2.4.2",
     "gm": "^1.17.0",
     "lodash": "^2.4.1",
-    "q": "^1.0.1"
   },
   "devDependencies": {
     "chai": "^1.9.2",
