@@ -25,6 +25,7 @@
     "bluebird": "^2.4.2",
     "gm": "^1.17.0",
     "lodash": "^2.4.1",
+    "mime": "^1.2.11"
   },
   "devDependencies": {
     "chai": "^1.9.2",
