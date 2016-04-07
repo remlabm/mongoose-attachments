@@ -39,7 +39,7 @@ if (!mongoose.models.User) {
   UserSchema.plugin(plugin, {
     directory: path.join(process.cwd(), 'test', 'tmp'),
     storage: { providerName: 'fakeProvider', options: { } },
-    gm: { imageMagick: true, },
+    gm: { imageMagick: false, },
     properties: {
       document: {
         styles: {
